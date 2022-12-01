@@ -1,0 +1,23 @@
+[server]
+mode = "development"
+port = 8080
+debug = true
+maps = "map_data.json"
+http_timeout = 15
+jwt_timeout = 60
+cache_expired = 5
+cache_purged = 10
+time_zone = "Asia/Jakarta"
+docs = "swagger/index.html"
+
+[development]
+# DB CONFIGURATION
+db_host = "127.0.0.1"
+db_port = 3306
+db_driver = "mysql"
+db_name = "sequis"
+db_username = "sequisuser"
+db_password = "wanttoknowaja"
+
+# DOMAIN CONFIGURATION
+domain = "localhost:8080"

@@ -1,0 +1,498 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/friends/block": {
+            "post": {
+                "description": "API for Block User",
+                "tags": [
+                    "Friends Management"
+                ],
+                "summary": "Block User",
+                "parameters": [
+                    {
+                        "description": "Request block user",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.BlockRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "EN",
+                        "description": "Must be EN or ID",
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response UnblockResponse and generic response",
+                        "schema": {
+                            "$ref": "#/definitions/types.BlockResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    },
+                    "500": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/create-request": {
+            "post": {
+                "description": "API for Friend Request",
+                "tags": [
+                    "Friends Management"
+                ],
+                "summary": "Friend Request",
+                "parameters": [
+                    {
+                        "description": "Request friend request",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateFriendRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "EN",
+                        "description": "Must be EN or ID",
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response CreateFriendRequestResponse and generic response",
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateFriendRequestResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    },
+                    "500": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/list": {
+            "post": {
+                "description": "API for Friend List",
+                "tags": [
+                    "Friend List"
+                ],
+                "summary": "Friend List",
+                "parameters": [
+                    {
+                        "description": "Request friend request list",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.FriendlistRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "EN",
+                        "description": "Must be EN or ID",
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response FriendlistResponse and generic response",
+                        "schema": {
+                            "$ref": "#/definitions/types.FriendlistResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    },
+                    "500": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/mutual": {
+            "post": {
+                "description": "API for Mutual Friend",
+                "tags": [
+                    "Friend List"
+                ],
+                "summary": "Mutual Friend",
+                "parameters": [
+                    {
+                        "description": "Request Mutual Friend lists",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.MutualRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "EN",
+                        "description": "Must be EN or ID",
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response MutualRequest and generic response",
+                        "schema": {
+                            "$ref": "#/definitions/types.MutualRequest"
+                        }
+                    },
+                    "400": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    },
+                    "500": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/request-action/{action}": {
+            "post": {
+                "description": "API for Friend Request List",
+                "tags": [
+                    "Friends Management"
+                ],
+                "summary": "Friend Request Action",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "(accept or reject)",
+                        "name": "action",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request friend request list",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.ActionFriendRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "EN",
+                        "description": "Must be EN or ID",
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response ActionFriendRequestResponse and generic response",
+                        "schema": {
+                            "$ref": "#/definitions/types.ActionFriendRequestResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    },
+                    "500": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/request-list": {
+            "post": {
+                "description": "API for Friend Request List",
+                "tags": [
+                    "Friend List"
+                ],
+                "summary": "Friend Request List",
+                "parameters": [
+                    {
+                        "description": "Request friend request list",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.FriendRequestList"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "EN",
+                        "description": "Must be EN or ID",
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response CodeSystemValidate and generic response",
+                        "schema": {
+                            "$ref": "#/definitions/types.FriendRequestListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    },
+                    "500": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/unblock": {
+            "post": {
+                "description": "API for Unblock User",
+                "tags": [
+                    "Friends Management"
+                ],
+                "summary": "Unblock User",
+                "parameters": [
+                    {
+                        "description": "Request unblock user",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.BlockRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "EN",
+                        "description": "Must be EN or ID",
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response UnblockResponse and generic response",
+                        "schema": {
+                            "$ref": "#/definitions/types.BlockResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    },
+                    "500": {
+                        "description": "for more information about response_code please see file map_data.json",
+                        "schema": {
+                            "$ref": "#/definitions/types.GeneralResponseType"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "types.ActionFriendRequest": {
+            "type": "object",
+            "required": [
+                "requestor",
+                "to"
+            ],
+            "properties": {
+                "requestor": {
+                    "type": "string"
+                },
+                "to": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.ActionFriendRequestResponse": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "types.BlockRequest": {
+            "type": "object",
+            "properties": {
+                "block": {
+                    "type": "string"
+                },
+                "requestor": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.BlockResponse": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "types.CreateFriendRequest": {
+            "type": "object",
+            "required": [
+                "requestor",
+                "to"
+            ],
+            "properties": {
+                "requestor": {
+                    "type": "string"
+                },
+                "to": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateFriendRequestResponse": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "types.FriendRequestList": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.FriendRequestListResponse": {
+            "type": "object",
+            "properties": {
+                "requests": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/types.Requestor"
+                    }
+                }
+            }
+        },
+        "types.FriendlistRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.FriendlistResponse": {
+            "type": "object",
+            "properties": {
+                "friends": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "types.GeneralResponseType": {
+            "type": "object",
+            "properties": {
+                "response_code": {
+                    "type": "integer"
+                },
+                "response_message": {
+                    "type": "string"
+                },
+                "response_status": {
+                    "type": "boolean"
+                },
+                "response_timestamp": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.MutualRequest": {
+            "type": "object",
+            "properties": {
+                "friends": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "types.Requestor": {
+            "type": "object",
+            "properties": {
+                "requestor": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

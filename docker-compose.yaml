@@ -1,0 +1,37 @@
+version: '3.0'
+services:
+        sequis-test:
+                build: .
+                image: sequis-test:latest
+                restart: always
+                ports:
+                        - 8080:8080
+                environment:
+                        SERVER_MODE: development
+                        SERVER_PORT: 8080
+                        DEVELOPMENT_DB_DRIVER: mysql
+                        DEVELOPMENT_DB_HOST: dbsequis
+                        DEVELOPMENT_DB_PORT: 3306
+                        DEVELOPMENT_DB_NAME: sequis
+                        DEVELOPMENT_DB_USERNAME: sequisuser
+                        DEVELOPMENT_DB_PASSWORD: wanttoknowaja
+                networks:
+                        - sequis
+        dbsequis:
+                image: mysql:8.0
+                container_name: dbsequis
+                restart: unless-stopped
+                environment:
+                        MYSQL_DATABASE: "sequis"
+                        MYSQL_ROOT_PASSWORD: "wanttoknowaja"
+                        MYSQL_PASSWORD: "wanttoknowaja"
+                        MYSQL_USER: "sequisuser"
+                volumes:
+                        - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+                networks:
+                        - sequis
+networks:
+        sequis:
+                driver: bridge
+
+

@@ -1,0 +1,327 @@
+definitions:
+  types.ActionFriendRequest:
+    properties:
+      requestor:
+        type: string
+      to:
+        type: string
+    required:
+    - requestor
+    - to
+    type: object
+  types.ActionFriendRequestResponse:
+    properties:
+      success:
+        type: boolean
+    type: object
+  types.BlockRequest:
+    properties:
+      block:
+        type: string
+      requestor:
+        type: string
+    type: object
+  types.BlockResponse:
+    properties:
+      success:
+        type: boolean
+    type: object
+  types.CreateFriendRequest:
+    properties:
+      requestor:
+        type: string
+      to:
+        type: string
+    required:
+    - requestor
+    - to
+    type: object
+  types.CreateFriendRequestResponse:
+    properties:
+      success:
+        type: boolean
+    type: object
+  types.FriendRequestList:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  types.FriendRequestListResponse:
+    properties:
+      requests:
+        items:
+          $ref: '#/definitions/types.Requestor'
+        type: array
+    type: object
+  types.FriendlistRequest:
+    properties:
+      email:
+        type: string
+    type: object
+  types.FriendlistResponse:
+    properties:
+      friends:
+        items:
+          type: string
+        type: array
+    type: object
+  types.GeneralResponseType:
+    properties:
+      response_code:
+        type: integer
+      response_message:
+        type: string
+      response_status:
+        type: boolean
+      response_timestamp:
+        type: string
+    type: object
+  types.MutualRequest:
+    properties:
+      friends:
+        items:
+          type: string
+        type: array
+    type: object
+  types.Requestor:
+    properties:
+      requestor:
+        type: string
+      status:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /friends/block:
+    post:
+      description: API for Block User
+      parameters:
+      - description: Request block user
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/types.BlockRequest'
+      - default: EN
+        description: Must be EN or ID
+        in: header
+        name: Accept-Language
+        required: true
+        type: string
+      responses:
+        "200":
+          description: response UnblockResponse and generic response
+          schema:
+            $ref: '#/definitions/types.BlockResponse'
+        "400":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+        "500":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+      summary: Block User
+      tags:
+      - Friends Management
+  /friends/create-request:
+    post:
+      description: API for Friend Request
+      parameters:
+      - description: Request friend request
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateFriendRequest'
+      - default: EN
+        description: Must be EN or ID
+        in: header
+        name: Accept-Language
+        required: true
+        type: string
+      responses:
+        "200":
+          description: response CreateFriendRequestResponse and generic response
+          schema:
+            $ref: '#/definitions/types.CreateFriendRequestResponse'
+        "400":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+        "500":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+      summary: Friend Request
+      tags:
+      - Friends Management
+  /friends/list:
+    post:
+      description: API for Friend List
+      parameters:
+      - description: Request friend request list
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/types.FriendlistRequest'
+      - default: EN
+        description: Must be EN or ID
+        in: header
+        name: Accept-Language
+        required: true
+        type: string
+      responses:
+        "200":
+          description: response FriendlistResponse and generic response
+          schema:
+            $ref: '#/definitions/types.FriendlistResponse'
+        "400":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+        "500":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+      summary: Friend List
+      tags:
+      - Friend List
+  /friends/mutual:
+    post:
+      description: API for Mutual Friend
+      parameters:
+      - description: Request Mutual Friend lists
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/types.MutualRequest'
+      - default: EN
+        description: Must be EN or ID
+        in: header
+        name: Accept-Language
+        required: true
+        type: string
+      responses:
+        "200":
+          description: response MutualRequest and generic response
+          schema:
+            $ref: '#/definitions/types.MutualRequest'
+        "400":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+        "500":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+      summary: Mutual Friend
+      tags:
+      - Friend List
+  /friends/request-action/{action}:
+    post:
+      description: API for Friend Request List
+      parameters:
+      - description: (accept or reject)
+        in: path
+        name: action
+        required: true
+        type: string
+      - description: Request friend request list
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/types.ActionFriendRequest'
+      - default: EN
+        description: Must be EN or ID
+        in: header
+        name: Accept-Language
+        required: true
+        type: string
+      responses:
+        "200":
+          description: response ActionFriendRequestResponse and generic response
+          schema:
+            $ref: '#/definitions/types.ActionFriendRequestResponse'
+        "400":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+        "500":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+      summary: Friend Request Action
+      tags:
+      - Friends Management
+  /friends/request-list:
+    post:
+      description: API for Friend Request List
+      parameters:
+      - description: Request friend request list
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/types.FriendRequestList'
+      - default: EN
+        description: Must be EN or ID
+        in: header
+        name: Accept-Language
+        required: true
+        type: string
+      responses:
+        "200":
+          description: response CodeSystemValidate and generic response
+          schema:
+            $ref: '#/definitions/types.FriendRequestListResponse'
+        "400":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+        "500":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+      summary: Friend Request List
+      tags:
+      - Friend List
+  /friends/unblock:
+    post:
+      description: API for Unblock User
+      parameters:
+      - description: Request unblock user
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/types.BlockRequest'
+      - default: EN
+        description: Must be EN or ID
+        in: header
+        name: Accept-Language
+        required: true
+        type: string
+      responses:
+        "200":
+          description: response UnblockResponse and generic response
+          schema:
+            $ref: '#/definitions/types.BlockResponse'
+        "400":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+        "500":
+          description: for more information about response_code please see file map_data.json
+          schema:
+            $ref: '#/definitions/types.GeneralResponseType'
+      summary: Unblock User
+      tags:
+      - Friends Management
+swagger: "2.0"

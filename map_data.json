@@ -1,0 +1,62 @@
+{
+  "maps": [
+    {
+      "map_name": "error_codes_en",
+      "entries": {
+        "99": "Something went wrong",
+        "200": "Success",
+        "202": "Request Accepted",
+        "400": "Bad Request",
+        "404": "Not Found",
+        "8000": "Accept-Language cannot be null/empty or must be EN/ID",
+        "8001": "Content-Type cannot be null/empty or must be application/json",
+        "8002": "Authorization cannot be null/empty",
+        "8003": "Session not verified or expired",
+        "8004": "Username already exist",
+        "8005": "Invalid password",
+        "8006": "Invalid username or password",
+        "8007": "Username not found",
+        "8008": "Account not found",
+        "8009": "Email not registered",
+        "8011": "Data not found",
+        "8017": "Request ID already exist",
+        "8018": "Invalid grant type",
+        "8019": "You have no authorized",
+        "8028": "Access Menu already exist",
+        "8029": "Access Menu not found",
+        "8030": "You dont have permission to access this page",
+        "8045": "Back date is not allowed",
+        "8046": "Email already registered"
+      }
+    },
+    {
+      "map_name": "error_codes_id",
+      "entries": {
+        "99": "Terjadi Kesalahan",
+        "200": "Sukses",
+        "202": "Request diterima",
+        "400": "Permintaan salah",
+        "404": "Tidak ditemukan",
+        "8000": "Accept-Language tidak boleh kosong atau harus EN/ID",
+        "8001": "Content-Type tidak boleh kosong atau harus application/json",
+        "8002": "Authorization tidak boleh kosong",
+        "8003": "Sesi tidak terverifikasi atau kedarluarsa",
+        "8004": "Username sudah ada",
+        "8005": "Password salah",
+        "8006": "Username atau password salah",
+        "8007": "Username tidak ditemukan",
+        "8008": "Akun tidak ditemukan",
+        "8009": "Email tidak terdaftar",
+        "8011": "Data tidak ditemukan",
+        "8017": "Request ID sudah pernah ada",
+        "8018": "Grant type salah",
+        "8019": "Tidak ada authorisasi",
+        "8028": "Access Menu sudah ada",
+        "8029": "Access Menu kosong",
+        "8030": "Kamu butuh permisi untuk mengakses halaman ini",
+        "8045": "Back date tidak diperkenankan",
+        "8046": "Email sudah terdaftar"
+      }
+    }
+  ]
+}
